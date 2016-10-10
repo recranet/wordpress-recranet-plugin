@@ -50,7 +50,6 @@ class Recranet_Loader {
 
 		$this->actions = array();
 		$this->filters = array();
-
 	}
 
 	/**

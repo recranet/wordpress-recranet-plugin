@@ -54,52 +54,6 @@ class Recranet_Admin {
 
 	}
 
-	/**
-	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Recranet_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Recranet_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/recranet-admin.css', array(), $this->version, 'all' );
-
-	}
-
-	/**
-	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Recranet_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Recranet_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/recranet-admin.js', array( 'jquery' ), $this->version, false );
-
-	}
-
     /**
      * Register the administration menu for this plugin into the WordPress Dashboard menu.
      *
@@ -152,7 +106,7 @@ class Recranet_Admin {
 	}
 
     /**
-	 * Render the treshold day input for this plugin
+	 * Render the organization input for this plugin
 	 *
 	 * @since  1.0.0
 	 */
@@ -161,12 +115,65 @@ class Recranet_Admin {
 	}
 
     /**
+     * Render the breakpoint small input for this plugin
+     *
+     * @since  1.0.0
+     */
+    public function recranet_breakpoint_small_cb() {
+        echo '<input type="text" name="' . $this->plugin_name . '_breakpoint_small" id="' . $this->plugin_name . '_breakpoint_small" value="' . get_option( $this->plugin_name . '_breakpoint_small', 720 ) . '">';
+    }
+
+    /**
+     * Render the breakpoint medium input for this plugin
+     *
+     * @since  1.0.0
+     */
+    public function recranet_breakpoint_medium_cb() {
+        echo '<input type="text" name="' . $this->plugin_name . '_breakpoint_medium" id="' . $this->plugin_name . '_breakpoint_medium" value="' . get_option( $this->plugin_name . '_breakpoint_medium', 940 ) . '">';
+    }
+
+    /**
+     * Render the breakpoint large input for this plugin
+     *
+     * @since  1.0.0
+     */
+    public function recranet_breakpoint_large_cb() {
+        echo '<input type="text" name="' . $this->plugin_name . '_breakpoint_large" id="' . $this->plugin_name . '_breakpoint_large" value="' . get_option( $this->plugin_name . '_breakpoint_large', 1120 ) . '">';
+    }
+
+    /**
+	 * Render the radio input fields for this plugin
+	 *
+	 * @since  1.0.0
+	 */
+	public function recranet_html5mode_cb() {
+		$html5Mode = get_option( $this->plugin_name . '_html5mode' );
+		?>
+			<fieldset>
+				<label>
+					<input type="radio" name="<?php echo $this->plugin_name . '_html5mode' ?>" value="0" <?php checked( $html5Mode, 0 ); ?>>
+                    Gebruik de location hash (#) voor de routing van Recranet
+				</label>
+				<br>
+				<label>
+					<input type="radio" name="<?php echo $this->plugin_name . '_html5mode' ?>" value="1" <?php checked( $html5Mode, 1 ); ?>>
+                    Gebruik de HTML5 routing mode. Let op: hiervoor zijn aanvullende mod_rewrite regels vereist!
+				</label>
+			</fieldset>
+		<?php
+	}
+
+    /**
      * Register settings
      *
      * @since    1.0.0
      */
-    public function register_setting() {
+    public function register_settings() {
         register_setting( $this->plugin_name, $this->plugin_name . '_organization', 'intval' );
+        register_setting( $this->plugin_name, $this->plugin_name . '_breakpoint_small', 'intval' );
+        register_setting( $this->plugin_name, $this->plugin_name . '_breakpoint_medium', 'intval' );
+        register_setting( $this->plugin_name, $this->plugin_name . '_breakpoint_large', 'intval' );
+        register_setting( $this->plugin_name, $this->plugin_name . '_html5mode', 'intval' );
 
         add_settings_section(
     		$this->plugin_name . '_general',
@@ -181,7 +188,43 @@ class Recranet_Admin {
             array( $this, $this->plugin_name . '_organization_cb' ),
             $this->plugin_name,
             $this->plugin_name . '_general',
-            array( 'label_for' => $this->plugin_name . '_position' )
+            array( 'label_for' => $this->plugin_name . '_organization' )
+        );
+
+        add_settings_field(
+            $this->plugin_name . '_breakpoint_small',
+            'Breakpoint (small)',
+            array( $this, $this->plugin_name . '_breakpoint_small_cb' ),
+            $this->plugin_name,
+            $this->plugin_name . '_general',
+            array( 'label_for' => $this->plugin_name . '_breakpoint_small' )
+        );
+
+        add_settings_field(
+            $this->plugin_name . '_breakpoint_medium',
+            'Breakpoint (medium)',
+            array( $this, $this->plugin_name . '_breakpoint_medium_cb' ),
+            $this->plugin_name,
+            $this->plugin_name . '_general',
+            array( 'label_for' => $this->plugin_name . '_breakpoint_medium' )
+        );
+
+        add_settings_field(
+            $this->plugin_name . '_breakpoint_large',
+            'Breakpoint (large)',
+            array( $this, $this->plugin_name . '_breakpoint_large_cb' ),
+            $this->plugin_name,
+            $this->plugin_name . '_general',
+            array( 'label_for' => $this->plugin_name . '_breakpoint_large' )
+        );
+
+        add_settings_field(
+            $this->plugin_name . '_html5mode',
+            'HTML5 routing mode',
+            array( $this, $this->plugin_name . '_html5mode_cb' ),
+            $this->plugin_name,
+            $this->plugin_name . '_general',
+            array( 'label_for' => $this->plugin_name . '_html5mode' )
         );
     }
 }
