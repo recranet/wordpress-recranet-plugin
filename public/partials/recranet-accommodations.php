@@ -17,7 +17,7 @@ $options = array(
     'breakpoint_small' => get_option( 'recranet_breakpoint_small', 720 ),
     'breakpoint_medium' => get_option( 'recranet_breakpoint_medium', 940 ),
     'breakpoint_large' => get_option( 'recranet_breakpoint_large', 1140 ),
-    'html5mode' => get_option( 'html5mode', 0 ),
+    'html5mode' => get_option( 'recranet_html5mode', 0 ),
 );
 
 $locale = get_locale();
