@@ -175,6 +175,9 @@ class Recranet {
 
         // Register shortcodes
         $this->loader->add_action( 'init', $plugin_public, 'register_shortcodes' );
+
+        // Register shortcodes
+        $this->loader->add_action( 'wp_head', $plugin_public, 'register_base_tag' );
 	}
 
 	/**

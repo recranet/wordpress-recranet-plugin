@@ -64,11 +64,26 @@ class Recranet_Public {
     }
 
     /**
+     * Register base tag
+     *
+     * @since    1.0.2
+     */
+    function register_base_tag() {
+        global $post;
+
+        // Add base tag to head for html5 mode
+        if (get_option('recranet_html5mode') && is_a( $post, 'WP_Post') && has_shortcode( $post->post_content, 'recranet_accommodations') ) {
+            echo '<base href="' . get_permalink() . '" />';
+        }
+    }
+
+    /**
      * Recranet accommodations
      *
      * @since    1.0.0
      */
     function recranet_accommodations( $atts ) {
+        // Include partial
 	    include_once( 'partials/recranet-accommodations.php' );
     }
 }
