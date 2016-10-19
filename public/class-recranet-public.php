@@ -64,16 +64,18 @@ class Recranet_Public {
     }
 
     /**
-     * Register base tag
+     * Register base tag and remove redirects
      *
-     * @since    1.0.2
+     * @since    1.0.3
      */
     function register_base_tag() {
         global $post;
 
         // Add base tag to head for html5 mode
-        if (get_option('recranet_html5mode') && is_a( $post, 'WP_Post') && has_shortcode( $post->post_content, 'recranet_accommodations') ) {
+        if (get_option( 'recranet_html5mode' ) && is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'recranet_accommodations' ) ) {
             echo '<base href="' . get_permalink() . '" />';
+
+            remove_action( 'template_redirect', 'redirect_canonical' );
         }
     }
 
