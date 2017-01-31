@@ -178,6 +178,8 @@ class Recranet {
 
         // Register shortcodes
         $this->loader->add_action( 'wp_head', $plugin_public, 'register_base_tag' );
+
+        remove_action( 'template_redirect', 'redirect_canonical' );
 	}
 
 	/**
