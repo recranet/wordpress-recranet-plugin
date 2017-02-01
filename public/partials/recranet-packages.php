@@ -25,13 +25,12 @@ $locale = substr($locale, 0, 2);
 ?>
 
 <div class="recranet-container recranet-container-init" data-recranet-container-init data-eq-pts="small: <?php echo $options['breakpoint_small']; ?>, medium:  <?php echo $options['breakpoint_medium']; ?>, large:  <?php echo $options['breakpoint_large']; ?>">
-    <recranet-accommodations<?php if (isset($atts['action'])) { echo ' action="' . $atts['action'] . '"'; } ?>></recranet-accommodations>
+    <recranet-packages<?php if (isset($atts['action'])) { echo ' action="' . $atts['action'] . '"'; } ?>></recranet-packages>
 </div>
 
 <script type="text/javascript">
     var recranetConfig = {
          accommodationsView: 'grid'
-        ,category: <?php echo (isset($atts['category']) ? (int) $atts['category'] : 'null'); ?>
         ,html5Mode: <?php echo ($options['html5mode'] ? 'true': 'false') ?>
         ,locale: '<?php echo $locale; ?>'
         ,organization: <?php echo $options['organization']; ?>

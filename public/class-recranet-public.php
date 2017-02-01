@@ -61,6 +61,8 @@ class Recranet_Public {
      */
     public function register_shortcodes() {
         add_shortcode( 'recranet_accommodations', array($this, 'recranet_accommodations') );
+        add_shortcode( 'recranet_packages', array($this, 'recranet_packages') );
+        add_shortcode( 'recranet_accommodation_reservation_form', array($this, 'recranet_accommodation_reservation_form') );
     }
 
     /**
@@ -72,10 +74,9 @@ class Recranet_Public {
         global $post;
 
         // Add base tag to head for html5 mode
-        if (get_option( 'recranet_html5mode' ) && is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'recranet_accommodations' ) ) {
+        if ( get_option( 'recranet_html5mode' ) && is_a( $post, 'WP_Post' ) &&
+            ( has_shortcode( $post->post_content, 'recranet_accommodations' ) || has_shortcode( $post->post_content, 'recranet_packages' ) ) ) {
             echo '<base href="' . get_permalink() . '" />';
-
-            remove_action( 'template_redirect', 'redirect_canonical' );
         }
     }
 
@@ -85,7 +86,24 @@ class Recranet_Public {
      * @since    1.0.0
      */
     function recranet_accommodations( $atts ) {
-        // Include partial
 	    include_once( 'partials/recranet-accommodations.php' );
+    }
+
+    /**
+     * Recranet packages
+     *
+     * @since    1.1.0
+     */
+    function recranet_packages( $atts ) {
+	    include_once( 'partials/recranet-packages.php' );
+    }
+
+    /**
+     * Recranet accommodation reservation form
+     *
+     * @since    1.1.0
+     */
+    function recranet_accommodation_reservation_form( $atts ) {
+	    include_once( 'partials/recranet-accommodation-reservation-form.php' );
     }
 }
