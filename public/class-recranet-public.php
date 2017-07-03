@@ -111,7 +111,7 @@ class Recranet_Public {
     /**
      * Recranet search form
      *
-     * @since    1.0.4
+     * @since    1.2.0
      */
     function recranet_search_form( $atts ) {
 	    include_once( 'partials/recranet-search-form.php' );
