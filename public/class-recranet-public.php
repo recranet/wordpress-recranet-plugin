@@ -63,6 +63,7 @@ class Recranet_Public {
         add_shortcode( 'recranet_accommodations', array($this, 'recranet_accommodations') );
         add_shortcode( 'recranet_packages', array($this, 'recranet_packages') );
         add_shortcode( 'recranet_accommodation_reservation_form', array($this, 'recranet_accommodation_reservation_form') );
+        add_shortcode( 'recranet_search_form', array($this, 'recranet_search_form') );
     }
 
     /**
@@ -92,7 +93,7 @@ class Recranet_Public {
     /**
      * Recranet packages
      *
-     * @since    1.1.0
+     * @since    1.0.0
      */
     function recranet_packages( $atts ) {
 	    include_once( 'partials/recranet-packages.php' );
@@ -101,9 +102,18 @@ class Recranet_Public {
     /**
      * Recranet accommodation reservation form
      *
-     * @since    1.1.0
+     * @since    1.0.0
      */
     function recranet_accommodation_reservation_form( $atts ) {
 	    include_once( 'partials/recranet-accommodation-reservation-form.php' );
+    }
+
+    /**
+     * Recranet search form
+     *
+     * @since    1.0.4
+     */
+    function recranet_search_form( $atts ) {
+	    include_once( 'partials/recranet-search-form.php' );
     }
 }
