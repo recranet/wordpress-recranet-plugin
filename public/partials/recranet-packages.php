@@ -28,6 +28,8 @@ $locale = substr($locale, 0, 2);
     <recranet-packages<?php if (isset($atts['action'])) { echo ' action="' . $atts['action'] . '"'; } ?>></recranet-packages>
 </div>
 
+<?php if (!defined('RECRANET_SDK')) : define('RECRANET_SDK', true); ?>
+
 <script type="text/javascript">
     var recranetConfig = {
          accommodationsView: 'grid'
@@ -45,3 +47,5 @@ $locale = substr($locale, 0, 2);
         var h = d.getElementsByTagName('head')[0]; h.appendChild(l); h.appendChild(s);
     })(document, (new Date()).getTime());
 </script>
+
+<?php endif; ?>

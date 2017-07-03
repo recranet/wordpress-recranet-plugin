@@ -6,7 +6,7 @@
  * This file is used to markup the public-facing aspects of the plugin.
  *
  * @link       https://recranet.com/
- * @since      1.2.0
+ * @since      1.0.4
  *
  * @package    Recranet
  * @subpackage Recranet/public/partials
@@ -28,6 +28,8 @@ $locale = substr($locale, 0, 2);
     <recranet-search-form<?php if (isset($atts['action'])) { echo ' action="' . $atts['action'] . '"'; } ?>></recranet-search-form>
 </div>
 
+<?php if (!defined('RECRANET_SDK')) : define('RECRANET_SDK', true); ?>
+
 <script type="text/javascript">
     var recranetConfig = {
          accommodation: <?php echo (int) $atts['accommodation']; ?>
@@ -46,3 +48,5 @@ $locale = substr($locale, 0, 2);
         var h = d.getElementsByTagName('head')[0]; h.appendChild(l); h.appendChild(s);
     })(document, (new Date()).getTime());
 </script>
+
+<?php endif; ?>

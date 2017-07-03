@@ -28,6 +28,8 @@ $locale = substr($locale, 0, 2);
     <recranet-accommodation-reservation-form<?php if (isset($atts['action'])) { echo ' action="' . $atts['action'] . '"'; } ?>></recranet-accommodation-reservation-form>
 </div>
 
+<?php if (!defined('RECRANET_SDK')) : define('RECRANET_SDK', true); ?>
+
 <script type="text/javascript">
     var recranetConfig = {
          accommodation: <?php echo (int) $atts['accommodation']; ?>
@@ -46,3 +48,5 @@ $locale = substr($locale, 0, 2);
         var h = d.getElementsByTagName('head')[0]; h.appendChild(l); h.appendChild(s);
     })(document, (new Date()).getTime());
 </script>
+
+<?php endif; ?>
