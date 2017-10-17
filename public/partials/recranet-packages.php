@@ -36,7 +36,7 @@ $locale = substr($locale, 0, 2);
         ,html5Mode: <?php echo ($options['html5mode'] ? 'true': 'false') ?>
         ,locale: '<?php echo $locale; ?>'
         ,organization: <?php echo $options['organization']; ?>
-        ,baseUrl: 'https://recranet.com'
+        ,baseUrl: 'https://app.recranet.com'
     };
 
     (function(d, random) {
