@@ -180,7 +180,9 @@ class Recranet {
         $this->loader->add_action( 'wp_head', $plugin_public, 'register_base_tag' );
 
         // Disable template redirect for HTML5 routing mode
-        remove_action( 'template_redirect', 'redirect_canonical' );
+		if ( get_option( 'recranet_html5mode' ) ) {
+        	remove_action( 'template_redirect', 'redirect_canonical' );
+		}
 	}
 
 	/**
