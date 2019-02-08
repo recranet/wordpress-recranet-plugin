@@ -42,7 +42,7 @@ $locale = substr($locale, 0, 2);
     (function(d, random) {
         var l = d.createElement('link'); l.rel = 'stylesheet'; l.type = 'text/css';
         l.href = recranetConfig.baseUrl + '/sdk/sdk.css?' + random + '=' + random + '&organization=' + recranetConfig.organization;
-        var s = d.createElement('script'); s.type = 'text/javascript'; s.async = true;
+        var s = d.createElement('script'); s.id = 'sdk'; s.type = 'text/javascript'; s.async = true;
         s.src = recranetConfig.baseUrl + '/sdk/sdk.js?' + random + '=' + random;
         var h = d.getElementsByTagName('head')[0]; h.appendChild(l); h.appendChild(s);
     })(document, (new Date()).getTime());
