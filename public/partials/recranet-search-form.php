@@ -32,9 +32,7 @@ $locale = substr($locale, 0, 2);
 
 <script type="text/javascript">
     var recranetConfig = {
-         accommodation: <?php echo (int) $atts['accommodation']; ?>
-        ,accommodationsView: 'grid'
-        ,html5Mode: <?php echo ($options['html5mode'] ? 'true': 'false') ?>
+        html5Mode: <?php echo ($options['html5mode'] ? 'true': 'false') ?>
         ,locale: '<?php echo $locale; ?>'
         ,organization: <?php echo $options['organization']; ?>
         ,baseUrl: 'https://app.recranet.com'
