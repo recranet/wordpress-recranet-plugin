@@ -36,6 +36,7 @@ $locale = substr($locale, 0, 2);
         ,locale: '<?php echo $locale; ?>'
         ,organization: <?php echo $options['organization']; ?>
         ,baseUrl: 'https://app.recranet.com'
+        ,category: <?php echo (isset($atts['category']) ? (int) $atts['category'] : 'null'); ?>
     };
 
     (function(d, random) {
