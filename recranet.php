@@ -16,7 +16,7 @@
  * Plugin Name:       Recranet
  * Plugin URI:        https://docs.recranet.com/
  * Description:       Recranet online boeken op uw website
- * Version:           1.4.1
+ * Version:           1.4.4
  * Author:            Recranet
  * Author URI:        https://recranet.com/
  * Text Domain:       recranet
