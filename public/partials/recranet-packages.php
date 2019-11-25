@@ -14,6 +14,7 @@
 
 $options = array(
     'organization' => get_option( 'recranet_organization', 1000 ),
+    'reference' => htmlspecialchars(get_option( 'recranet_reference', null ), ENT_QUOTES, 'UTF-8'),
     'breakpoint_small' => get_option( 'recranet_breakpoint_small', 720 ),
     'breakpoint_medium' => get_option( 'recranet_breakpoint_medium', 940 ),
     'breakpoint_large' => get_option( 'recranet_breakpoint_large', 1140 ),
@@ -36,6 +37,7 @@ $locale = substr($locale, 0, 2);
         ,html5Mode: <?php echo ($options['html5mode'] ? 'true': 'false') ?>
         ,locale: '<?php echo $locale; ?>'
         ,organization: <?php echo $options['organization']; ?>
+        ,reference: '<?php echo ($options['reference']) ? $options['reference'] : null; ?>'
         ,baseUrl: 'https://app.recranet.com'
     };
 

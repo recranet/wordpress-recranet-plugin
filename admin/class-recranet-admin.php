@@ -112,6 +112,15 @@ class Recranet_Admin {
 	 */
 	public function recranet_organization_cb() {
 		echo '<input type="text" name="' . $this->plugin_name . '_organization" id="' . $this->plugin_name . '_organization" value="' . get_option( $this->plugin_name . '_organization' ) . '">';
+    }
+
+    /**
+	 * Render the reference input for this plugin
+	 *
+	 * @since  1.0.0
+	 */
+	public function recranet_reference_cb() {
+		echo '<input type="text" name="' . $this->plugin_name . '_reference" id="' . $this->plugin_name . '_reference" value="' . get_option( $this->plugin_name . '_reference' ) . '">';
 	}
 
     /**
@@ -170,6 +179,7 @@ class Recranet_Admin {
      */
     public function register_settings() {
         register_setting( $this->plugin_name, $this->plugin_name . '_organization', 'intval' );
+        register_setting( $this->plugin_name, $this->plugin_name . '_reference', 'string' );
         register_setting( $this->plugin_name, $this->plugin_name . '_breakpoint_small', 'intval' );
         register_setting( $this->plugin_name, $this->plugin_name . '_breakpoint_medium', 'intval' );
         register_setting( $this->plugin_name, $this->plugin_name . '_breakpoint_large', 'intval' );
@@ -189,6 +199,15 @@ class Recranet_Admin {
             $this->plugin_name,
             $this->plugin_name . '_general',
             array( 'label_for' => $this->plugin_name . '_organization' )
+        );
+
+        add_settings_field(
+            $this->plugin_name . '_reference',
+            'Referentie',
+            array( $this, $this->plugin_name . '_reference_cb' ),
+            $this->plugin_name,
+            $this->plugin_name . '_general',
+            array( 'label_for' => $this->plugin_name . '_reference' )
         );
 
         add_settings_field(
