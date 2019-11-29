@@ -7,10 +7,10 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Recranet online boeken op uw website.
+Recranet Booking boekingsstraat modules
 
 == Description ==
 
-Met deze plugin kan u Recranet online boeken weergeven op uw website.
+Met deze plugin kun je de Recranet Booking boekingsstraat modules integreren op je website.
 
-Heeft u vragen of opmerkingen, neem dan contact op met support@recranet.com
+Heb je vragen of opmerkingen? Neem dan contact op met support@recranet.com
